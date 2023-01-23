@@ -1,3 +1,16 @@
 h1 {
     color: green;
 }
+
+.gameboard {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    height: 50vw;
+    width: 50vw;
+    border: solid 2px black;
+    margin-top: 30px;
+}
+
+.gametile {
+    border: solid 2px black;
+}
