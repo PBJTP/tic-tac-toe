@@ -65,7 +65,7 @@ const playMove = (gametile, data) => {
         [2,4,6],
     ]
     //check if game is over
-    if(data.gameOver || data.round >= 9) {
+    if (data.gameOver || data.round >= 9) {
         return;
     };
 
@@ -90,11 +90,11 @@ const playMove = (gametile, data) => {
     data.board
 
     winConditions.forEach(gametile => {
-        if (data.board[gametile[0]] === data.board[gametile[1]]) {
+        if (data.board[gametile[0]] === data.board[gametile[1]] &&
+            data.board[gametile[0]] === data.board[gametile[2]]) {
             console.log('WORKED');
+            data.gameOver = true;
         }
-        console.log(data.board);
-        console.log(gametile)
     })
     //USE THE DIV IDS!!
     console.log(gametile,data);
