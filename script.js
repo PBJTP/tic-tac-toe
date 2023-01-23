@@ -38,6 +38,9 @@ const startGame = (data) => {
     //initialize game variables
     data.player1 = "X";
     data.player2 = "O";
+    data.board = [0,1,2,3,4,5,6,7,8];
+    data.gameOver = false;
+    data.round = 0;
     data.currentPlayer = data.player1;
     console.log(data);
 
@@ -54,5 +57,29 @@ const startGame = (data) => {
 };
 
 const playMove = (gametile, data) => {
+    //check if game is over
+    if(data.gameOver || data.round >= 9) {
+        return;
+    };
+
+    // //check if tile is full
+    if (data.board[gametile.id] === "X" || data.board[gametile.id] === "O") {
+        return;
+    }
+
+    //Chnage data.board value to player piece. update HTML
+    data.board[gametile.id] = data.currentPlayer;
+    gametile.textContent = data.currentPlayer;
+    
+    // Switch Player. SWITCH TO TERNARY WHEN YOU LOOK UP HOW
+    if (data.currentPlayer === data.player1) {
+        data.currentPlayer = data.player2
+    } else {
+        data.currentPlayer = data.player1
+    };
+
+    data.round++
+    //USE THE DIV IDS!!
     console.log(gametile,data);
+    console.log(data.round);
 }
