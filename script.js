@@ -1,16 +1,3 @@
-console.log('hello');
-
-// const player = ()
-
-const gameboard = (() => {
-    let board = [
-        "","","",
-        "","","",
-        "","",""
-    ];
-    return {board};
-})();
-
 // first step we need to atach event listeners to the form to get user data
 
 //attach event listeners to gamebox
@@ -43,10 +30,29 @@ form.addEventListener('submit', (event) => {
 
     console.log(formData);
     console.log(data);
+
+    startGame(data);
 });
 
 const startGame = (data) => {
     //initialize game variables
+    data.player1 = "X";
+    data.player2 = "O";
+    data.currentPlayer = data.player1;
+    console.log(data);
 
     //add event listeners to the gameboard
+    const addBoardListeners = (e) => {
+        document.querySelectorAll('.gametile').forEach(x =>{
+        x.addEventListener('click', (e) => {
+            // make players move using data object
+            playMove(e.target, data);
+        });
+        });
+    };
+    addBoardListeners(data);
+};
+
+const playMove = (gametile, data) => {
+    console.log(gametile,data);
 }
