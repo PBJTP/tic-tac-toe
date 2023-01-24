@@ -21,6 +21,7 @@
 
     const form = document.querySelector('#userData');
 
+
     form.addEventListener('submit', (event) => {
         //prevents refresh
         event.preventDefault();
@@ -44,8 +45,8 @@
 
         //add event listeners to the gameboard
         const addBoardListeners = (e) => {
-            document.querySelectorAll('.gametile').forEach(x =>{
-            x.addEventListener('click', (e) => {
+            document.querySelectorAll('.gametile').forEach(tile =>{
+            tile.addEventListener('click', (e) => {
                 // make players move using data object
                 playMove(e.target, data);
             });
@@ -53,6 +54,18 @@
         };
         addBoardListeners(data);
     };
+
+    //Reset Button
+
+    document.getElementById('reset').addEventListener('click', (data) => {
+        data.player1Name = "";
+        data.player2Name = "";
+        data.board = [0,1,2,3,4,5,6,7,8];
+        data.gameOver = false;
+        data.round = 0;
+        data.currentPlayer = data.player1;
+
+    });
 
     const playMove = (gametile, data) => {
         const winConditions = [
